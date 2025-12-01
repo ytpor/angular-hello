@@ -1,6 +1,17 @@
-# AngularHello
+# Angular Hello
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+Just to say hello
+
+## Get started
+
+* Clone this repository
+* Change directory into the newly cloned repository
+
+## Install packages
+
+```bash
+npm install
+```
 
 ## Development server
 
@@ -53,6 +64,28 @@ ng e2e
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Building Docker Image
+
+```
+docker compose build
+
+# -OR-
+
+docker build -t angular-hello-app .
+```
+
+## Running the Docker Image
+
+```
+# Using docker compose
+docker compose up -d
+```
+
+```
+# Using docker run
+docker run -p 4200:80 angular-hello-app
+```
 
 ## Additional Resources
 
