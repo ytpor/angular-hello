@@ -1,0 +1,23 @@
+services:
+  angular-hello:
+    image: <APP_IMAGE_LATEST_VALUE>
+    ports:
+      - target: 80
+        published: 4200
+        protocol: tcp
+        mode: ingress
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      rollback_config:
+        parallelism: 0
+      restart_policy:
+        condition: on-failure
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external: true
