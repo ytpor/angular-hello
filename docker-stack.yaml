@@ -1,6 +1,6 @@
 services:
   angular-hello:
-    image: <APP_IMAGE_LATEST_VALUE>
+    image: <APP_IMAGE_VALUE>
     ports:
       - target: 80
         published: 4200

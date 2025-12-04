@@ -67,7 +67,7 @@ deploy_staging:
     - ssh-keyscan -H "$DEPLOY_STAGING_SWARM_HOST" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     # 1. Substitute the image tag in the stack file for staging
-    - sed "s|<APP_IMAGE_LATEST_VALUE>|$APP_IMAGE_LATEST|g" $STACK_FILE > staging-$STACK_FILE
+    - sed "s|<APP_IMAGE_VALUE>|$APP_IMAGE_TAGGED|g" $STACK_FILE > staging-$STACK_FILE
     # 2. Copy the final stack file to the remote server
     - scp -o StrictHostKeyChecking=no staging-$STACK_FILE "$DEPLOY_STAGING_USER@$DEPLOY_STAGING_SWARM_HOST":~/
   script:
@@ -96,7 +96,7 @@ deploy_production:
     - ssh-keyscan -H "$DEPLOY_PRODUCTION_SWARM_HOST" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     # 1. Substitute the image tag AND port in the stack file for production
-    - sed "s|<APP_IMAGE_LATEST_VALUE>|$APP_IMAGE_LATEST|g; s|4200|4202|g" $STACK_FILE > production-$STACK_FILE
+    - sed "s|<APP_IMAGE_VALUE>|$APP_IMAGE_TAGGED|g; s|4200|4202|g" $STACK_FILE > production-$STACK_FILE
     # 2. Copy the final stack file to the remote server
     - scp -o StrictHostKeyChecking=no production-$STACK_FILE "$DEPLOY_PRODUCTION_USER@$DEPLOY_PRODUCTION_SWARM_HOST":~/
   script:
