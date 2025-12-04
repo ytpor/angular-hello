@@ -15,6 +15,16 @@ services:
         parallelism: 0
       restart_policy:
         condition: on-failure
+      placement:
+        max_replicas_per_node: 1
+        constraints:
+          - node.role == worker
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
     networks:
       - nginx-proxy
 
